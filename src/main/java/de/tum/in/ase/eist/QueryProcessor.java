@@ -83,6 +83,22 @@ public class QueryProcessor {
 
         } else if (query.contains("banana")) {
             return "yellow";
+        } else if (query.contains("prime")) {
+            String[] temp = query.split(":");
+            temp = temp[1].split(",");
+
+            for (int i = 0; i < temp.length; i++) {
+                temp[i] = temp[i].trim();
+                try {
+                    if (isPrime(Integer.parseInt(temp[i]))) {
+                        return String.valueOf(Integer.parseInt(temp[i]));
+                    }
+
+                } catch (Exception e) {
+                    return "";
+                }
+            }
+            return String.valueOf(0);
         } else {
             return "";
         }
@@ -107,6 +123,18 @@ public class QueryProcessor {
             return false;
         }
     }
+
+    static boolean isPrime(int n) {
+        // Corner case
+        if (n <= 1) return false;
+
+        // Check from 2 to n-1
+        for (int i = 2; i < n; i++)
+            if (n % i == 0) return false;
+
+        return true;
+    }
+
 }
 
 
