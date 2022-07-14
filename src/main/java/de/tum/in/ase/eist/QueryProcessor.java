@@ -81,6 +81,8 @@ public class QueryProcessor {
             }
             return String.valueOf(0);
 
+        } else if (query.contains("banana")) {
+            return "yellow";
         } else {
             return "";
         }
