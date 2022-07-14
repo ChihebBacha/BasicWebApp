@@ -46,6 +46,24 @@ public class QueryProcessor {
                 }
             }
             return String.valueOf(max);
+        } else if (query.contains("multiplied")) {
+            String[] temp = query.split("is");
+            temp = temp[1].split("multiplied");
+            temp[0] = temp[0].trim();
+            temp[1] = temp[1].trim();
+            int i1 = 0;
+            int i2 = 0;
+            try {
+                i1 = Integer.parseInt(temp[0]);
+            } catch (Exception e) {
+                return "";
+            }
+            try {
+                i2 = Integer.parseInt(temp[1]);
+            } catch (Exception e) {
+                return "";
+            }
+            return String.valueOf(i1 * i2);
         } else {
             return "";
         }
