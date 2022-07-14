@@ -64,12 +64,47 @@ public class QueryProcessor {
                 return "";
             }
             return String.valueOf(i1 * i2);
+        } else if (query.contains("square")) {
+            String[] temp = query.split(":");
+            temp = temp[1].split(",");
+
+            for (int i = 0; i < temp.length; i++) {
+                temp[i] = temp[i].trim();
+                try {
+                    if (isSquare(Integer.parseInt(temp[i])) && isCube(Integer.parseInt(temp[i]))) {
+                        return String.valueOf(Integer.parseInt(temp[i]));
+                    }
+
+                } catch (Exception e) {
+                    return "";
+                }
+            }
+            return String.valueOf(0);
+
         } else {
             return "";
         }
+
+
     }
 
+    static Boolean isSquare(int n) {
+        for (int i = 0; i < n / 2 + 2; i++) {
+            if (i * i == n) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    static Boolean isCube(int num) {
+        int n = (int) Math.round(Math.pow(num, 1.0 / 3.0));
+        if ((num == n * n * n)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 
